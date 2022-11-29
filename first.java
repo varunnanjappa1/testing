@@ -53,14 +53,61 @@ class first1 {
             per(per,newsString+fun);
         }
     }
-    public static  int squ(int i,int j,int n,int m){
+    public static  int maze(int i,int j,int n,int m){
         if(i==n||j==m)
             return 0;
         if(i==n-1 && j==m-1)
             return 1;
-        int first=squ(i+1, j, n, m);
-        int sec=squ(i, j+1, n, m);
+        int first=maze(i+1, j, n, m);
+        int sec=maze(i, j+1, n, m);
         return first+sec;
+    }
+    public static void divide(int arr[],int low,int high){
+        if(low<high){
+        int mid=low+(high-low)/2;
+        divide(arr,low, mid);
+        divide(arr,mid+1,high);
+        mergesort(arr,low,high,mid);
+        }
+    }
+    public static void mergesort(int arr[],int low,int high,int mid){
+        int merge[]=new int[high+1];
+        int i=low,j=mid+1,x=low;
+        while(i<=mid&&j<=high){
+            if(arr[i]<=arr[j]){
+                merge[x++]=arr[i++];
+            }
+            else{
+                merge[x++]=arr[j++];
+            }
+        }
+        while(i<=mid)
+            merge[x++]=arr[i++];
+        while(j<=high)
+            merge[x++]=arr[j++];
+        for(x=low;x<=high;x++)
+            arr[x]=merge[x];
+    }
+    public void pivot(int arr[],int low,int high){
+        if(low<high){
+            int part= partition(arr,low,high);
+            pivot(arr,low,part-1);
+            pivot(arr,part+1,high);
+        }
+    }
+    public int partition(int arr[],int low,int high){
+        int pi=arr[high];
+        int i=low-1;
+        for(int j=low;j<high;j++){
+            if(arr[j]<pi){
+                i++;
+                arr[i]=(arr[i]+arr[j])-(arr[j]=arr[i]);
+            }
+        }
+        i++;
+        arr[i]=(arr[i]+arr[high])-(arr[high]=arr[i]);        
+        return i;
+
     }
     public static void main(String args[]) {
         Scanner read = new Scanner(System.in);
@@ -70,7 +117,7 @@ class first1 {
         int m=4;
         first1 buy =new first1();
         Random rup =new Random();
-        System.out.print(squ(0,0,3,3));
+    //    System.out.print(maze(0,0,3,3));            // maze solution
     //    String cp="swims";
     //    buy.per(cp,"");               //permutations of string
     //    buy.act(cp.length()-1,cp);            // string reverse using recursion
@@ -85,7 +132,7 @@ class first1 {
        for(i=0;i<n;i++){
             arr[i]=rup.nextInt(100);
     //    System.out.println(buy.check(0,arr));  //check is arrray is sorted?
-    //        System.out.print(" "+arr[i]);
+            System.out.print(" "+arr[i]);
     //        if(key==arr[i])
     //            System.out.println("element found");
         }
@@ -285,6 +332,13 @@ class first1 {
     //        }
     //        arr[k+1]=curr;
     //    }
-                                   
+                                            // merge sort
+    //    divide(arr,0,n-1);
+    //    for(i=0;i<n;i++)
+    //        System.out.print(" "+arr[i]);
+                                            //  quick sort
+        buy.pivot(arr,0,n-1);
+        for(i=0;i<n;i++)
+            System.out.print(" "+arr[i]);
     }
 }

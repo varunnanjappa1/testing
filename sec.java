@@ -28,20 +28,20 @@ class sec1{
         }
         return true;
     }
-    public List<List<String>> queen(int n){
-        List<List<String>> all=new ArrayList<>();
-        char board[][]= new char[n][n];
-        help(board,all,0);
+    public List<List<String>> queen(int n){                      //start
+        List<List<String>> all=new ArrayList<>();              //to store result
+        char board[][]= new char[n][n];                         //chess board
+        help(board,all,0);                                 //call for iteration through col
         return all;
     }
     public void help(char[][] board,List<List<String>> all,int col){
-        if(col==board.length){
+        if(col==board.length){                                // return condition
             saveb(board,all);
             return;
         }
         for(int row=0;row<board.length;row++){
-            if(isafe(row,col,board)){
-                board[row][col]='q';
+            if(isafe(row,col,board)){                          // check if queen is safe
+                board[row][col]='q';                           //if safe add q then col+1 and rest of the row is added with '.'
                 help(board,all,col+1);
                 board[row][col]='.';
             }
@@ -50,7 +50,7 @@ class sec1{
     int count=0;
     public int saveb(char[][] board,List<List<String>> all){
         String row="";
-        List<String> newboard=new ArrayList<>();
+        List<String> newboard=new ArrayList<>();                //new array list for storing every answer
         for(int i=0;i<board.length;i++){
             row="";
             for(int j=0;j<board[0].length;j++){
@@ -59,9 +59,9 @@ class sec1{
                 else    
                     row+='.';
             }
-            newboard.add(row);
+            newboard.add(row);                                    // storing individual answers of each row
         }
-        all.add(newboard);
+        all.add(newboard);                                         // storing every answer
         return count++;
     }
     public static void main(String[] args) {
@@ -69,7 +69,10 @@ class sec1{
         System.out.println("enter the no of rows");
         sec1 ob=new sec1();
         int n=read.nextInt();
+        long st=System.currentTimeMillis();
         System.out.println(ob.queen(n));
+        long et=System.currentTimeMillis();
+        System.out.println("time taken ="+(et-st));
         System.out.println(ob.count);
     }
 }
