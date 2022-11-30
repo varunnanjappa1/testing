@@ -1,5 +1,6 @@
+package test;
 import java.util.*;
-class sec1{
+public class sec{
     public boolean isafe(int row,int col,char[][] board){
         int j,i,c,r;
         for(j=0;j<board.length;j++){
@@ -67,7 +68,7 @@ class sec1{
     public static void main(String[] args) {
         Scanner read=new Scanner(System.in);
         System.out.println("enter the no of rows");
-        sec1 ob=new sec1();
+        sec ob=new sec();
         int n=read.nextInt();
         long st=System.currentTimeMillis();
         System.out.println(ob.queen(n));

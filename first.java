@@ -1,8 +1,9 @@
 
+
 import java.util.*;
+import bank.*;
 
-
-class first1 {
+public class first {
     public int pascal(int i){
         if(i==0)
             return 1;
@@ -115,8 +116,9 @@ class first1 {
         int n = read.nextInt();
         int i,j;
         int m=4;
-        first1 buy =new first1();
+        first buy =new first();
         Random rup =new Random();
+        
     //    System.out.print(maze(0,0,3,3));            // maze solution
     //    String cp="swims";
     //    buy.per(cp,"");               //permutations of string

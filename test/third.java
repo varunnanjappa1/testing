@@ -1,6 +1,7 @@
+package test;
 import java.util.*;
 
-class third1 {
+public class third {
     public boolean help(char[][] board,int r,int c){
         if(r==board.length)
             return true;
@@ -50,7 +51,7 @@ class third1 {
 
     public static void main(String[] args) {
         Scanner read=new Scanner(System.in);
-        third1 buy=new third1();
+        third buy=new third();
         System.out.println("enter matrix size(6 or 9)only");
         int n=read.nextInt();
         char board[][]=new char[n][n];
