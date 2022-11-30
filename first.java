@@ -1,7 +1,6 @@
 
 
 import java.util.*;
-import bank.*;
 
 public class first {
     public int pascal(int i){
@@ -340,7 +339,7 @@ public class first {
     //        System.out.print(" "+arr[i]);
                                             //  quick sort
         buy.pivot(arr,0,n-1);
-        for(i=0;i<n;i++)
-            System.out.print(" "+arr[i]);
+        for(int item:arr)
+            System.out.print(" "+item);
     }
 }
