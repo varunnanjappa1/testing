@@ -23,7 +23,7 @@ class bank {
     Scanner re=new Scanner(System.in);
     account1.name="qwerty";
     System.out.println(account1.name);
-    
+
  }
     
 }  
