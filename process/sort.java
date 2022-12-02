@@ -1,6 +1,6 @@
 package process;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class sort {
     public void pivot(Integer arr[],int low,int high){
@@ -32,7 +32,11 @@ public class sort {
 class process{
     public static void main(String[] args) {
         sort sb=new sort();
-
+        ArrayList<Integer> arr=new ArrayList<>();
+        arr.add(23);
+        Integer artr[]=new Integer[arr.size()];
+        arr.toArray(artr);
+            sb.print(artr);
         Integer a[]=new Integer[10];
         a[0]=5;
         a[1]=4;

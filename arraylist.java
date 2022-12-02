@@ -1,8 +1,8 @@
+
 import java.util.*;
 import process.*;
 
-
-class arraylist{
+class arraylist1{
     Scanner read=new Scanner(System.in);
     public void add(ArrayList<Integer> list,int n){        // can be optimized
         System.out.println();
@@ -30,14 +30,15 @@ class arraylist{
     }
 }
 
-public class fifth {
+public class arraylist {
     public static void main(String[] args) {
         Scanner read=new Scanner(System.in);
         Random rand=new Random();
         process.sort sw=new process.sort();
-        arraylist se=new arraylist();
+        arraylist1 se=new arraylist1();
         ArrayList<Integer> list=new ArrayList<>();
         int ch=0,n=0;
+        int p=0;
         for(;;){
             System.out.println("...enter your choice...");
             System.out.print("1:add element\n"+"2:delete element\n"+"3:sort array\n"+"4:reset all elements\n"+"5:change element in array\n"+"6:display elements\n");
@@ -66,16 +67,22 @@ public class fifth {
                         int t=read.nextInt();
                         if(t<0||t==0||t>list.size()){
                             System.out.println("array out of bound");
+                            break;
                         }
                         se.display(list);
                         System.out.println("enter the position('s) you want to delete");
                         int a[]=new int[t];
-                        for(int i=0;i<=t-1;i++){
+                        p=n;
+                        int i=0;
+                        for(i=0;i<=t-1;i++){
                             a[i]=read.nextInt();
-                            if(a[i]<0||a[i]>list.size())
+                            if(a[i]<0||a[i]>list.size()){
                                 System.out.println("error");
+                                break;
+                            }
+                            p--;
                         }
-                        se.delete(a,list,0);
+                       se.delete(a,list,0);
                     }break;
                     case 6:{
                         se.display(list);
@@ -92,11 +99,11 @@ public class fifth {
                     }break;
                     case 3:{
                         Integer ar[]=new Integer[list.size()];
-                        list.toArray(ar);
-                        sw.pivot(ar,0,n-1);
+                        list.toArray(ar);                          //convert list to array.
+                        sw.pivot(ar,0,p-1);
                         sw.print(ar);
-                        for(int i=0;i<ar.length;i++){
-                            list.set(i,ar[i]);
+                        for(int i=0;i<list.size();i++){
+                            list.set(i,ar[i]);                   //convert array to list.
                         }
                     }break;
                     default:  
