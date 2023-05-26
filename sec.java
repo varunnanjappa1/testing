@@ -1,4 +1,4 @@
-package test;
+
 import java.util.*;
 public class sec{
     public boolean isafe(int row,int col,char[][] board){

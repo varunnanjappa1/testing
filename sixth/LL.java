@@ -1,5 +1,7 @@
 package sixth;
-import java.util.*;
+
+
+
 
 public class LL{
     node head;
@@ -116,34 +118,34 @@ public class LL{
             return true;
         node mid=middle();
         node sec=reverseforpalendrome(mid.next);
-        node first=head;
+        node fi=head;
         while(sec!=null){
-            if(first.data!=sec.data)
+            if(fi.data!=sec.data)
                 return false;
-            first=first.next;
+            fi=fi.next;
             sec=sec.next;    
         }
         return true;  
     }
-    public node reverseforpalendrome(node head){
-        if(head==null){
-            System.out.println("only one element present");
+    public node reverseforpalendrome(node x){
+        if(x==null){
             return null;
         }
         node prev=null;
-        node curr=head;
+        node curr=x;
         while(curr!=null){
-            node next=curr.next;
+            node nex=curr.next;
             curr.next=prev;
             prev=curr;
-            curr=next;
+            curr=nex;
         } 
-        return prev;
+
+         return prev;
     }
     public int sizelist(){
-        int size=1;
+        int size=0;
         node curr=head;
-        while(curr.next!=null){
+        while(curr!=null){
             size++;
             curr=curr.next;
         }
@@ -160,16 +162,32 @@ public class LL{
    public node findnode(int index){
         node ind;int i;
         node curr=head;
-        for(i=1;i<index;i++)
+        for(i=1;i<=index;i++)
             curr=curr.next;
         ind=curr;
         return ind;
    }
    public node middle(){
-        int s=sizelist()/2;
-        node w=findnode(s);
-        return w;
-   }
+        node temp = head;
+        if (head != null) {
+            int length = sizelist();
+            if(length%2==0){
+                int middleLength = length / 2;
+                while (middleLength != 1) {
+                    temp = temp.next;
+                    middleLength--;
+                }
+            }
+            else{
+                int middleLength = length / 2;
+                while (middleLength != 0) {
+                    temp = temp.next;
+                    middleLength--;
+                }
+            }
+        }
+        return temp;
+    }
    public boolean cheackloop(){
     if(head==null&&head.next==null)
         return false;
@@ -215,13 +233,17 @@ class sixth  {
         LL sb=new LL();
 
          sb.addfront("abc");
-        sb.addfront("ade");sb.addback("abc");sb.addback("ade");sb.print();
+        sb.addfront("ade");sb.addback("abe");sb.addback("ade");sb.addback("ade");;sb.print();
         System.out.println(sb.pal());
-        sb.reverse();
+        System.out.println(sb.sizelist());
+        System.out.println(sb.middle().data);
+        sb.print();
+     //   sb.reverse();
+        System.out.println(sb.sizelist());
            // sb.dele();
         // sb.reverse();
         // sb.delintex(3);
-        System.out.println(sb.findnode(2).data);
+        System.out.println(sb.findnode(0).data);
         //LinkedList <Integer> list=new LinkedList<>();                
         // list.addFirst(21);
         // list.addFirst(20);

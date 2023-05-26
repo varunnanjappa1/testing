@@ -1,0 +1,8 @@
+git init
+git add .
+git status
+git commit -m "  "
+git remote set-url origin https...
+git push origin main
+git push origin master
+git remote set-'  ' origin https...

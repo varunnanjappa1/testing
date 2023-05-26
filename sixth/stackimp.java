@@ -1,3 +1,4 @@
+package sixth;
 
 import java.util.*;
 
@@ -73,6 +74,7 @@ public class stackimp {                       //stack using linkedlist
             for(int item:list){
                 System.out.print(" "+item);
             }
+            System.out.print("<-- top");
             System.out.println();
         }
     }  
@@ -82,6 +84,7 @@ public class stackimp {                       //stack using linkedlist
             for(Character item:list){
                 System.out.print(" "+item);
             }
+            System.out.print("<-- top");
             System.out.println();
         }
         public void push(Character data){
@@ -123,13 +126,37 @@ public class stackimp {                       //stack using linkedlist
         public void addtoindex(int n,Character data){
             int r=list.size()-n+1;
             int i=0;
-            while(i==r){
+            if(i==r){
                 list.push(data);
                 return;
             }
             Character top=list.pop();
             addtoindex(n, data);
             list.push(top);
+        }
+        public void deletebottom(int n){
+            int i=0;
+            int r=list.size()-1;
+            if(i==r){
+                list.pop();
+                return;
+            }
+            Character top=list.pop();
+            deletebottom(n);
+            list.push(top);
+        }
+        public boolean pal(){                                    //check for palendrome
+            if(list.size()==0&&list.size()==1)
+                return true;
+            int j=(list.size()/2);int i=0,p=list.size()-1;
+            while(i<j&&p>j){
+                int com=Character.compare(list.get(i),list.get(p));
+                if(com!=0){
+                    return false;
+                }
+                i++;p--;
+            }
+            return true;
         }
     }
 }
@@ -144,12 +171,15 @@ class sort{
         ds.pop();ds.push(23);ds.push(45);ds.push(61);ds.print();
         ds.pop();ds.peek();ds.print();
         stackimp.stack2 da=new stackimp.stack2();
-        da.pop();da.push('a');da.push('b');da.push('c');da.print();
+        da.pop();da.push('a');da.push('a');da.push('p');da.print();
         da.peek();da.print();da.addtobottom('p');
-        da.reverse();
+       
         da.print();
         da.size();
-        da.addtoindex(2, 'a');
+        da.addtoindex(1, 'a');
         da.print();
+        da.deletebottom(0);
+        da.print();
+        System.out.println(da.pal());
     }
 }
